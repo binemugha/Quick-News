@@ -15,6 +15,8 @@
 		1888184F2646B10A001ADDBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1888184E2646B10A001ADDBE /* Assets.xcassets */; };
 		188818522646B10A001ADDBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188818502646B10A001ADDBE /* LaunchScreen.storyboard */; };
 		1888185B2646B268001ADDBE /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888185A2646B268001ADDBE /* Model.swift */; };
+		188818692646DD0A001ADDBE /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188818682646DD0A001ADDBE /* NewsTableViewCell.swift */; };
+		1888186E2646E7BC001ADDBE /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888186D2646E7BC001ADDBE /* Services.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		188818512646B10A001ADDBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		188818532646B10A001ADDBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1888185A2646B268001ADDBE /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		188818682646DD0A001ADDBE /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		1888186D2646E7BC001ADDBE /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +66,9 @@
 			children = (
 				188818422646B107001ADDBE /* AppDelegate.swift */,
 				188818442646B107001ADDBE /* SceneDelegate.swift */,
+				1888186D2646E7BC001ADDBE /* Services.swift */,
 				1888185A2646B268001ADDBE /* Model.swift */,
+				188818682646DD0A001ADDBE /* NewsTableViewCell.swift */,
 				188818462646B107001ADDBE /* ViewController.swift */,
 				188818482646B107001ADDBE /* Main.storyboard */,
 				1888184E2646B10A001ADDBE /* Assets.xcassets */,
@@ -145,6 +151,8 @@
 			files = (
 				1888185B2646B268001ADDBE /* Model.swift in Sources */,
 				188818472646B107001ADDBE /* ViewController.swift in Sources */,
+				188818692646DD0A001ADDBE /* NewsTableViewCell.swift in Sources */,
+				1888186E2646E7BC001ADDBE /* Services.swift in Sources */,
 				188818432646B107001ADDBE /* AppDelegate.swift in Sources */,
 				188818452646B107001ADDBE /* SceneDelegate.swift in Sources */,
 				1888184D2646B107001ADDBE /* Top_9ja_news.xcdatamodeld in Sources */,

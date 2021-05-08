@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct News: Codable {
     var status: String?
@@ -16,5 +17,10 @@ struct News: Codable {
 struct Articles: Codable {
     var title: String?
     var description: String?
+    var publishedAt: String?
     var content: String?
+    
+    
 }
+
+

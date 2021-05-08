@@ -9,53 +9,57 @@ import UIKit
 
 class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var titleTxt: UILabel!
-    @IBOutlet weak var descriptionTxt: UILabel!
-    
+    var parser = Parser()
     var listOfArticles = [Articles]()
+
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        parser.fetchNewsData { (data) in
+            self.listOfArticles = data
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
         
         tableView.delegate = self
         tableView.dataSource = self
-        
+    
     }
     
     //MARK: - TableView Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return listOfArticles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! NewsTableViewCell
+        let news = listOfArticles[indexPath.row]
+
+        cell.titleTxt.text = news.title
+
+        let isoDate = news.publishedAt
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "MM-dd-yyy HH:mm"
+
+        if let date = dateFormatterGet.date(from: isoDate!) {
+            cell.dataTxt.text = dateFormatterPrint.string(from: date)
+        } else {
+            cell.dataTxt.text = "There was an error with the time"
+        }
+         
         return cell
     }
     
-    
-    //MARK: - Fetching the News
-    func fetchNewsData(completionHandler: @escaping (News) -> Void) {
-        let url = URL(string: "https://newsapi.org/v2/top-headlines?country=ng&apiKey=e224765b6f2b4742ad4c0bd10babaf19")!
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data else {return}
-            
-            do{
-                let newsData = try JSONDecoder().decode(News.self, from: data)
-                
-                completionHandler(newsData)
-            }catch{
-                let error = error
-                print(error.localizedDescription)
-            }
-
-        }.resume()
-            
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "next", sender: self)
     }
-
-
+    
 }
 
