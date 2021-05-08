@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+struct News: Codable {
+    var status: String?
+    var totalResults: Int?
+    var articles: [Articles]
+}
+
+struct Articles: Codable {
+    var title: String?
+    var description: String?
+    var content: String?
+}
