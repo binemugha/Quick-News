@@ -18,7 +18,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        tableView.register(UINib(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsTableViewCell")
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -30,7 +30,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let cell = tableview.deq
         
         return cell
     }
