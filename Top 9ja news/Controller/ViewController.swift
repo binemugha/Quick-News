@@ -14,6 +14,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
 
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +28,23 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
     
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        if segue.identifier == "next"{
-            let vc = segue.destination as! DetailViewController
-            
+    @objc private func didPullToRefresh(){
+        
+        parser.fetchNewsData { (data) in
+            self.listOfArticles = data
+            DispatchQueue.main.async {
+                //self.listOfArticles.removeAll()
+                self.tableView.refreshControl?.endRefreshing()
+                self.tableView.reloadData()
+            }
         }
+        
     }
+    
     
     //MARK: - TableView Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,9 +73,21 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         return cell
     }
     
+    //Move the next detailed view controller
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let news = listOfArticles[indexPath.row]
+    
         performSegue(withIdentifier: "next", sender: self)
+//        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyBoard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+//        navigationController?.pushViewController(vc, animated: true);
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "next"{
+            let vc = segue.destination as! DetailViewController
+            vc.details = listOfArticles[(tableView.indexPathForSelectedRow?.row)!]
+            
+        }
     }
     
     

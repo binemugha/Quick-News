@@ -83,55 +83,39 @@
         <!--Details-->
         <scene sceneID="ypW-GK-9yA">
             <objects>
-                <viewController id="f7S-fz-6PG" customClass="DetailViewController" customModule="Top_9ja_news" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="f7S-fz-6PG" customClass="DetailViewController" customModule="Top_9ja_news" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DVP-EV-3fX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xDg-8f-jEe">
-                                <rect key="frame" x="0.0" y="88" width="414" height="278"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="414" id="cBg-Pi-p8G"/>
-                                    <constraint firstAttribute="height" constant="278" id="w3f-RT-eXd"/>
-                                </constraints>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="m8z-Tb-IxA">
-                                <rect key="frame" x="0.0" y="374" width="414" height="382"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32N-GK-fde">
-                                <rect key="frame" x="162" y="799" width="90" height="34"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                <state key="normal" title="Read More">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="titleShadowColor" systemColor="labelColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="readMore:" destination="f7S-fz-6PG" eventType="touchUpInside" id="ZpS-pU-Rbd"/>
-                                </connections>
-                            </button>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jLL-YH-fh2">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="D41-3U-0EG">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ErJ-Tn-HKc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="32N-GK-fde" firstAttribute="centerX" secondItem="DVP-EV-3fX" secondAttribute="centerX" id="6Y8-8N-jaT"/>
-                            <constraint firstItem="m8z-Tb-IxA" firstAttribute="leading" secondItem="ErJ-Tn-HKc" secondAttribute="leading" id="9vI-Hh-bcL"/>
-                            <constraint firstItem="ErJ-Tn-HKc" firstAttribute="bottom" secondItem="32N-GK-fde" secondAttribute="bottom" constant="29" id="FyM-sv-N6k"/>
-                            <constraint firstItem="32N-GK-fde" firstAttribute="top" secondItem="m8z-Tb-IxA" secondAttribute="bottom" constant="43" id="XNS-mr-WZL"/>
-                            <constraint firstItem="xDg-8f-jEe" firstAttribute="top" secondItem="ErJ-Tn-HKc" secondAttribute="top" id="avV-wd-UcJ"/>
-                            <constraint firstItem="xDg-8f-jEe" firstAttribute="leading" secondItem="ErJ-Tn-HKc" secondAttribute="leading" id="bAl-Al-Dlb"/>
-                            <constraint firstItem="m8z-Tb-IxA" firstAttribute="top" secondItem="xDg-8f-jEe" secondAttribute="bottom" constant="8" id="c2I-Ys-g1C"/>
-                            <constraint firstItem="xDg-8f-jEe" firstAttribute="trailing" secondItem="ErJ-Tn-HKc" secondAttribute="trailing" id="yhu-Ma-mdG"/>
-                            <constraint firstItem="m8z-Tb-IxA" firstAttribute="trailing" secondItem="ErJ-Tn-HKc" secondAttribute="trailing" id="yn0-Bo-H9W"/>
+                            <constraint firstAttribute="bottom" secondItem="jLL-YH-fh2" secondAttribute="bottom" id="71w-GJ-ZMk"/>
+                            <constraint firstItem="D41-3U-0EG" firstAttribute="centerX" secondItem="DVP-EV-3fX" secondAttribute="centerX" id="EiV-2x-sQS"/>
+                            <constraint firstItem="jLL-YH-fh2" firstAttribute="top" secondItem="ErJ-Tn-HKc" secondAttribute="top" id="fkQ-rL-3SW"/>
+                            <constraint firstItem="jLL-YH-fh2" firstAttribute="trailing" secondItem="ErJ-Tn-HKc" secondAttribute="trailing" id="gop-Fs-aCc"/>
+                            <constraint firstItem="D41-3U-0EG" firstAttribute="centerY" secondItem="DVP-EV-3fX" secondAttribute="centerY" id="hBD-HH-MvG"/>
+                            <constraint firstItem="jLL-YH-fh2" firstAttribute="leading" secondItem="ErJ-Tn-HKc" secondAttribute="leading" id="vMS-et-x9t"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Details" largeTitleDisplayMode="never" id="hMJ-I8-Vxd"/>
                     <connections>
-                        <outlet property="imageView" destination="xDg-8f-jEe" id="ic1-rb-Bsb"/>
-                        <outlet property="textView" destination="m8z-Tb-IxA" id="b8K-Mg-L1b"/>
+                        <outlet property="spinner" destination="D41-3U-0EG" id="PkQ-tA-AKK"/>
+                        <outlet property="webView" destination="jLL-YH-fh2" id="yhj-hf-CrA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dZe-Th-v3c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -159,9 +143,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

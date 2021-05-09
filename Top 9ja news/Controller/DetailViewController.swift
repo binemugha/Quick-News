@@ -6,19 +6,30 @@
 //
 
 import UIKit
+import WebKit
 
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var labelTxt: UILabel!
+    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
-    var imageViewR: UIImage!
-    var textViewR: String!
+    var details: Articles?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        //imageView.image = details?.urlToImage
+        guard let url = URL(string: (details?.url)!) else{
+            print("An error occured with the website")
+            return
+        }
+        spinner.startAnimating()
+        webView.load(URLRequest(url: url))
+        spinner.stopAnimating()
     }
     
 
