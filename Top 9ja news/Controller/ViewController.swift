@@ -29,6 +29,12 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         tableView.dataSource = self
     
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "next"{
+            let vc = segue.destination as! DetailViewController
+            
+        }
+    }
     
     //MARK: - TableView Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,8 +64,11 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let news = listOfArticles[indexPath.row]
         performSegue(withIdentifier: "next", sender: self)
     }
+    
+    
     
 }
 
